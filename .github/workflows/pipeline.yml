@@ -72,13 +72,13 @@ jobs:
       #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       #     color: #ffff00
 
-  # tag_release:
-  #   needs: [simple_deployment_pipeline]
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Bump version and push tag
-  #       uses: anothrNick/github-tag-action@1.67.0
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         DEFAULT_BUMP: patch
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
