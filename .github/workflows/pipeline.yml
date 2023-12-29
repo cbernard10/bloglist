@@ -30,7 +30,9 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
-          start: npm run start:test
+          start: |
+            npm run dev:ui
+            npm run start:test
           wait-on: http://localhost:3003
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
