@@ -50,8 +50,6 @@ Cypress.Commands.add("addBlog", ({ title, author, url }) => {
 });
 
 Cypress.Commands.add("likeBlog", ({ title, author, url }) => {
-
-
   cy.visit("http://localhost:5173");
   cy.contains("view").click();
   cy.get("#likeButton").click();

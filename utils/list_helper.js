@@ -30,8 +30,10 @@ const mostBlogs = (blogs) => {
 const mostLikes = (blogs) => {
   const author = _.maxBy(blogs, (blog) => blog.likes).author;
 
-  const blogsFromAuthor = blogs.filter(blog => blog.author === author)
-  const likes = blogsFromAuthor.map(blog => blog.likes).reduce((acc, curr) => acc+curr, 0)
+  const blogsFromAuthor = blogs.filter((blog) => blog.author === author);
+  const likes = blogsFromAuthor
+    .map((blog) => blog.likes)
+    .reduce((acc, curr) => acc + curr, 0);
 
   return { author, likes };
 };

@@ -86,7 +86,7 @@ test("a blog can be added if user is logged in", async () => {
     likes: 57,
   };
 
-  response = await api
+  const response = await api
     .post("/api/blogs")
     .send(newBlog)
     .set("Authorization", `Bearer ${token}`)
@@ -159,7 +159,7 @@ test("blog can be added, and then deleted", async () => {
     likes: 44,
   };
 
-  response = await api
+  const response = await api
     .post("/api/blogs")
     .send(newBlog)
     .set("Authorization", `Bearer ${token}`)
