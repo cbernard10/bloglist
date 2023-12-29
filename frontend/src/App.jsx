@@ -22,10 +22,8 @@ const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
-
   const [message, setMessage] = useState({ text: null, type: "success" });
 
-  const [blogFormVisible, setBlogFormVisible] = useState(false);
 
   useEffect(() => {
     blogService.getAll().then((blogs) => setBlogs(blogs));
@@ -114,7 +112,6 @@ const App = () => {
   };
 
   const handleLike = (blog) => {
-    // adds one like to the blog post in the database and updates the state of the blog list
     const updatedBlog = {
       ...blog,
       likes: blog.likes + 1,
@@ -123,7 +120,6 @@ const App = () => {
     console.log(updatedBlog);
 
     blogService.update(blog.id, updatedBlog).then((res) => {
-      console.log(res);
       setBlogs(blogs.map((blog) => (blog.id === res.id ? res : blog)));
     });
   };

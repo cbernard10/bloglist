@@ -13,9 +13,6 @@ app.use(express.static("frontend/dist"));
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
 
-// const mongoUrl = 'mongodb://localhost/bloglist'
-// mongoose.connect(mongoUrl)
-
 mongoose.set("strictQuery", false);
 
 logger.info("connecting to", config.MONGODB_URI);
@@ -34,9 +31,6 @@ app.use(express.json());
 
 app.use(middleware.requestLogger);
 app.use(middleware.tokenExtractor);
-// app.use(middleware.userExtractor);
-
-// app.use('/api/blogs', middleware.userExtractor, blogsRouter)
 app.use("/api/blogs", blogsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
