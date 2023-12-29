@@ -32,10 +32,10 @@ jobs:
           command: npm run test:e2e
           start: npm run start:test
           wait-on: http://localhost:3003
-          env: |
-            TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }}
-            SECRET=${{ secrets.SECRET }}
-            MONGODB_URI=${{ secrets.MONGODB_URI }}
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          SECRET: ${{ secrets.SECRET }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
       - name: Deploy App
         uses: superfly/flyctl-actions/setup-flyctl@master
       - uses: actions/checkout@v3
