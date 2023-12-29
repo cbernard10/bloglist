@@ -10,7 +10,11 @@ const Notification = ({ message, type }) => {
     return null;
   }
 
-  return <div className={type} id="notificationBox">{message}</div>;
+  return (
+    <div className={type} id="notificationBox">
+      {message}
+    </div>
+  );
 };
 
 const App = () => {
@@ -38,10 +42,11 @@ const App = () => {
   }, []);
 
   const loginForm = () => (
-    <form onSubmit={handleLogin}>
-      <div>
-        username
+    <form onSubmit={handleLogin} className="flex flex-col gap-4 w-fit">
+      <div className="flex flex-row gap-4 items-center justify-between">
+        <span>Username</span>
         <input
+          className="p-1"
           id="usernameInput"
           type="text"
           value={username}
@@ -49,9 +54,10 @@ const App = () => {
           onChange={({ target }) => setUsername(target.value)}
         />
       </div>
-      <div>
-        password
+      <div className="flex flex-row gap-4 items-center justify-between">
+        <span>Password</span>
         <input
+          className="p-1"
           id="passwordInput"
           type="password"
           value={password}
@@ -59,7 +65,13 @@ const App = () => {
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit" id="loginButton">login</button>
+      <button
+        type="submit"
+        id="loginButton"
+        className="rounded-lg bg-blue-600 text-white border-4 border-transparent w-fit px-6 py-2 self-end active:bg-blue-800 active:border-blue-800 active:translate-y-[1px] hover:border-blue-700"
+      >
+        Login
+      </button>
     </form>
   );
 
@@ -70,17 +82,7 @@ const App = () => {
   };
 
   const blogForm = () => (
-    <Togglable
-      buttonLabel="new blog"
-      visible={blogFormVisible}
-      setVisible={setBlogFormVisible}
-    >
-      <BlogForm
-        addBlog={addBlog}
-        setBlogFormVisible={setBlogFormVisible}
-        setMessage={setMessage}
-      />
-    </Togglable>
+    <BlogForm addBlog={addBlog} startHidden={true} setMessage={setMessage} />
   );
 
   const handleLogin = async (event) => {
@@ -134,21 +136,25 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-12 p-12 mx-auto max-w-[1000px]">
       <Notification message={message.text} type={message.type} />
-      <h2>blogs</h2>
+      <h2 className="text-5xl font-bold">Blogs</h2>
       {!user && loginForm()}
       {user && (
-        <div>
-          <p>{user.name} logged in</p>
-          <button onClick={handleLogout}>logout</button>
-          {blogForm()}
-          {/* {blogs.map((blog) => (
-            <div key={blog.id} style={{display: "flex", gap: "12px" }}>
-              <Blog key={blog.id} blog={blog} user={user} />
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-row gap-4 items-start">
+            <p>
+              <span className="font-bold">{user.name}</span> logged in.
+            </p>
+            <button
+              onClick={handleLogout}
+              className="hover:underline text-red-600"
+            >
+              Logout
+            </button>
 
-            </div>
-          ))} */}
+            {blogForm()}
+          </div>
           <BlogList
             blogs={blogs.sort((a, b) => b.likes - a.likes)}
             user={user}

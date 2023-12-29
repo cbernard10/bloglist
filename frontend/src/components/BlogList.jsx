@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function BlogList({ blogs, user, handleLike, handleDelete }) {
   return (
-    <ul>
+    <ul className="flex flex-row gap-4">
       {blogs.map((blog) => (
         <div key={blog.id} style={{ display: "flex", gap: "12px" }}>
           <Blog

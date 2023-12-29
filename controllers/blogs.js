@@ -67,7 +67,15 @@ blogsRouter.delete(
     const blog = await Blog.findById(request.params.id);
 
     const creator = blog.user.toString();
-    const user = await request.user;
+    console.log(decodedToken.id);
+    const user = await User.findById(decodedToken.id);
+
+    if (!user) {
+      return response
+        .status(401)
+        .json({ error: "invalid user, cannot delete blog" });
+    }
+
     const userId = user._id.toString();
 
     if (creator !== userId) {

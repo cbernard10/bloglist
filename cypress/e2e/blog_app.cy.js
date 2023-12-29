@@ -32,7 +32,7 @@ describe("Blog app", function () {
     });
 
     it("A blog can be created", function () {
-      cy.contains("new blog").click();
+      cy.contains("New blog").click();
       cy.addBlog({
         title: "Test blog",
         author: "Test author",
@@ -49,7 +49,7 @@ describe("Blog app", function () {
         url: "Test url",
       });
 
-      cy.contains("view").click();
+      cy.contains("Expand").click();
       cy.get("#likeButton").click();
       cy.get("#likes").contains("1");
     });
@@ -61,7 +61,7 @@ describe("Blog app", function () {
         url: "Test url",
       });
 
-      cy.contains("view").click();
+      cy.contains("Expand").click();
       cy.get("#deleteButton").click();
       cy.get("html").should("not.contain", "Test blog");
     });
@@ -73,12 +73,12 @@ describe("Blog app", function () {
         url: "Test url",
       });
 
-      cy.contains("logout").click();
+      cy.contains("Logout").click();
       cy.get("#usernameInput").type("user");
       cy.get("#passwordInput").type("user");
       cy.get("#loginButton").click();
 
-      cy.contains("view").click();
+      cy.contains("Expand").click();
       cy.get("#deleteButton").should("not.exist");
     });
 
@@ -94,8 +94,8 @@ describe("Blog app", function () {
         url: "Test url2",
       });
 
-      cy.contains("view").click();
-      cy.contains("view").click();
+      cy.contains("Expand").click();
+      cy.contains("Expand").click();
 
       cy.get(".blog").eq(0).get("#likeButton").click();
 
