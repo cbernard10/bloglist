@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
-import Togglable from "./components/Togglable";
 import BlogForm from "./components/BlogForm";
 import BlogList from "./components/BlogList";
 
