@@ -7,17 +7,14 @@ const BlogForm = ({ addBlog, setMessage, startVisible }) => {
   const [visible, setVisible] = useState(startVisible);
 
   const handleBlogChange = (event) => {
-    console.log(event.target.value);
     setNewBlog(event.target.value);
   };
 
   const handleAuthorChange = (event) => {
-    console.log(event.target.value);
     setNewAuthor(event.target.value);
   };
 
   const handleUrlChange = (event) => {
-    console.log(event.target.value);
     setNewUrl(event.target.value);
   };
 

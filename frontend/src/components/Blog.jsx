@@ -3,14 +3,6 @@ import { useState } from "react";
 const Blog = ({ blog, user, handleLike, handleDelete }) => {
   const [visible, setVisible] = useState(false);
 
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: "solid",
-    borderWidth: 1,
-    marginBottom: 5,
-  };
-
   return (
     <li className="blog p-4 border-gray-100 border-2 drop-shadow-xl rounded-lg ">
       {blog && (
